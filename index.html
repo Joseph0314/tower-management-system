@@ -5,25 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="الأبراج السكنية لمنسوبي تجمع الرياض الصحي الثاني - صرح السكينة">
     <link href="https://media.base44.com/images/public/6a5aaaaaee3e338c04099981/610caf388_logo.png" rel="icon" type="image/svg+xml"/>
-    <title>الأبراج السكنية | صرح السكينة</title>
+    <title>تجمع الرياض الصحي الثاني - صرح السكينة | Riyadh Second Health Cluster</title>
     
-    <!-- Tailwind CSS & FontAwesome & IBM Plex Sans Arabic -->
+    <!-- Tailwind CSS & FontAwesome & Cairo Font -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['"IBM Plex Sans Arabic"', 'sans-serif'] },
+                    fontFamily: { sans: ['"Cairo"', 'sans-serif'] },
                     colors: {
-                        brand: {
-                            blue: '#005A5B', 
-                            gold: '#D4AF37', 
-                            lightBg: '#F8FAFC', 
-                            darkText: '#0F172A',
-                            slateBg: '#061E1F'
+                        emeraldTheme: {
+                            900: '#064e3b',
+                            800: '#065f46',
+                            700: '#047857',
+                            600: '#059669',
+                            100: '#d1fae5',
+                            50: '#ecfdf5'
                         }
                     }
                 }
@@ -31,93 +32,267 @@
         }
     </script>
     <style>
-        body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+        body { font-family: 'Cairo', sans-serif; }
         .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); width: 300%; }
         .carousel-slide { width: 33.333333%; flex-shrink: 0; }
+        .tab-active { border-bottom: 3px solid #059669; color: #059669; font-weight: 700; }
     </style>
 </head>
-<body class="bg-brand-lightBg text-brand-darkText min-h-screen flex flex-col justify-between transition-all duration-200">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between transition-all duration-200">
 
-    <!-- GLOBAL MAIN NAVIGATION BAR -->
-    <header class="bg-brand-blue text-white sticky top-0 z-40 shadow-md border-b-2 border-brand-gold/60 backdrop-blur-md bg-opacity-95">
+    <!-- TOP BAR / HEADER (EMERALD STYLE) -->
+    <header class="bg-emerald-900 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
             
-            <button onclick="changeTab('infoView')" class="group outline-none flex items-center gap-3" title="العودة إلى الصفحة الرئيسية">
-                <div class="bg-white p-2 rounded-xl shadow-inner w-12 h-12 shrink-0 flex items-center justify-center transition-transform group-hover:scale-105">
-                    <svg viewBox="0 0 100 100" class="w-full h-full text-brand-blue" fill="currentColor">
-                        <circle cx="50" cy="50" r="12" class="text-brand-blue"/>
-                        <path d="M50 12 C55 25 45 35 50 38 C55 35 45 25 50 12 Z" fill="#217A94" />
-                        <path d="M86 38 C75 42 65 34 62 38 C65 42 75 42 86 38 Z" fill="#217A94" />
-                        <path d="M72 80 C63 70 54 75 52 70 C54 67 63 70 72 80 Z" fill="#217A94" />
-                        <path d="M28 80 C37 70 46 75 48 70 C46 67 37 70 28 80 Z" fill="#217A94" />
-                        <path d="M14 38 C25 42 35 34 38 38 C35 42 25 42 14 38 Z" fill="#217A94" />
-                        <circle cx="50" cy="50" r="28" fill="none" stroke="#217A94" stroke-width="2" stroke-dasharray="4 2"/>
+            <button onclick="changeTab('infoView')" class="group outline-none flex items-center space-x-3 space-x-reverse cursor-pointer" title="الصفحة الرئيسية">
+                <div class="bg-white p-2 rounded-xl shadow-inner w-11 h-11 shrink-0 flex items-center justify-center transition-transform group-hover:scale-105">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-emerald-800" fill="currentColor">
+                        <circle cx="50" cy="50" r="12"/>
+                        <path d="M50 12 C55 25 45 35 50 38 C55 35 45 25 50 12 Z" fill="#047857" />
+                        <path d="M86 38 C75 42 65 34 62 38 C65 42 75 42 86 38 Z" fill="#047857" />
+                        <path d="M72 80 C63 70 54 75 52 70 C54 67 63 70 72 80 Z" fill="#047857" />
+                        <path d="M28 80 C37 70 46 75 48 70 C46 67 37 70 28 80 Z" fill="#047857" />
+                        <path d="M14 38 C25 42 35 34 38 38 C35 42 25 42 14 38 Z" fill="#047857" />
+                        <circle cx="50" cy="50" r="28" fill="none" stroke="#047857" stroke-width="2" stroke-dasharray="4 2"/>
                     </svg>
                 </div>
                 <div class="text-start">
-                    <span class="text-sm font-bold text-brand-gold tracking-wide block" id="txtMainLogoTitle">صرحُ السكينة</span>
-                    <span class="text-[10px] opacity-70 block font-light" id="headSubTitle">الأبراج السكنية لمنسوبي تجمع الرياض الصحي الثاني</span>
+                    <h1 class="font-bold text-lg md:text-xl leading-tight text-white" id="header-title">تجمع الرياض الصحي الثاني</h1>
+                    <p class="text-xs text-emerald-200" id="header-subtitle">صرحُ السكينة - الأبراج السكنية لمنسوبي التجمع</p>
                 </div>
             </button>
             
             <div class="flex items-center gap-3 flex-wrap justify-center">
                 <nav class="flex bg-black/20 p-1 rounded-xl text-xs md:text-sm font-semibold">
-                    <button onclick="changeTab('infoView')" id="tab_infoView" class="px-3 py-1.5 rounded-lg bg-brand-gold text-brand-blue shadow transition-all font-bold">
+                    <button onclick="changeTab('infoView')" id="tab_infoView" class="px-3.5 py-1.5 rounded-lg bg-emerald-700 text-white shadow transition-all font-bold">
                         <span id="txtTabInfo">دليل المجمع</span>
                     </button>
-                    <button onclick="changeTab('registryView')" id="tab_registryView" class="px-3 py-1.5 rounded-lg text-white hover:bg-white/10 transition-all">
+                    <button onclick="changeTab('registryView')" id="tab_registryView" class="px-3.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10 transition-all">
                         <span id="txtTabRegistry">منظومة التخصيص</span>
                     </button>
-                    <!-- INTEGRATED EMPLOYEE DASHBOARD TAB -->
-                    <button onclick="changeTab('employeeView')" id="tab_employeeView" class="px-3 py-1.5 rounded-lg text-amber-300 hover:bg-white/10 transition-all flex items-center gap-1.5">
+                    <button onclick="changeTab('employeeView')" id="tab_employeeView" class="px-3.5 py-1.5 rounded-lg text-amber-300 hover:bg-white/10 transition-all flex items-center gap-1.5">
                         <i class="fa-solid fa-user-shield"></i>
                         <span id="txtTabEmployee">لوحة الموظفين والاعتماد</span>
                     </button>
                 </nav>
                 
-                <button onclick="toggleAppLanguage()" class="bg-white/10 hover:bg-white/20 border border-white/20 text-brand-gold font-bold px-3 py-1.5 rounded-xl text-xs transition min-w-[70px]">
+                <button onclick="toggleAppLanguage()" class="bg-emerald-700 hover:bg-emerald-600 px-4 py-1.5 rounded-lg text-xs font-bold text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-globe"></i>
                     <span id="btnLangText">English</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ================= VIEW 1: OVERVIEW HUB ================= -->
-    <div id="infoView" class="max-w-7xl mx-auto px-4 py-8 w-full space-y-12">
-        <div class="relative overflow-hidden rounded-3xl shadow-xl bg-brand-slateBg border-b-4 border-brand-gold">
+    <!-- ================= VIEW 1: OVERVIEW HUB (PAGE 1) ================= -->
+    <div id="infoView" class="max-w-7xl mx-auto px-4 py-8 w-full space-y-10">
+        
+        <!-- MAIN HERO CAROUSEL SLIDER (EMERALD STYLE) -->
+        <div class="relative overflow-hidden rounded-2xl shadow-xl bg-emerald-900 text-white">
             <div class="carousel-track" id="heroCarouselTrack">
-                <div class="carousel-slide p-8 md:p-16 text-white flex flex-col justify-center min-h-[380px] text-start relative">
+                
+                <!-- SLIDE 1 -->
+                <div class="carousel-slide p-8 md:p-14 flex flex-col justify-center min-h-[360px] text-start relative bg-gradient-to-r from-emerald-950 to-emerald-800">
                     <div class="max-w-3xl space-y-4 z-10">
-                        <span class="bg-brand-gold/20 text-brand-gold border border-brand-gold/30 font-semibold px-3 py-1 rounded-full text-xs uppercase tracking-wider inline-block" id="slide1Badge">مدينة الملك فهد الطبية</span>
-                        <h2 class="text-3xl md:text-5xl font-bold leading-tight" id="slide1Headline">مرحباً بكم في صرح السكينة | سكن فاخر يليق بكوادر الصحة</h2>
-                        <p class="text-slate-300 text-sm leading-relaxed" id="slide1Subline">بكل تقدير واعتزاز، نرحب بكافة الكوادر الطبية والإدارية المتميزة لمدينة الملك فهد الطبية. تم إعداد وتطوير هذه الأبراج السكنية المتميزة لتوفر لكم بيئة معيشية آمنة ومريحة تدعم استقراركم وتلبي تطلعاتكم.</p>
-                        <div class="pt-4">
-                            <button onclick="changeTab('registryView')" class="bg-brand-gold hover:bg-amber-500 text-brand-blue font-bold px-6 py-3.5 rounded-xl shadow-md transition text-sm md:text-base flex items-center gap-2">
+                        <span class="bg-emerald-700/80 text-emerald-100 border border-emerald-500/30 font-semibold px-3 py-1 rounded-full text-xs uppercase inline-block" id="slide1Badge">مدينة الملك فهد الطبية</span>
+                        <h2 class="text-3xl md:text-4xl font-bold leading-tight" id="slide1Headline">مرحباً بكم في صرح السكينة | سكن فاخر يليق بكوادر الصحة</h2>
+                        <p class="text-emerald-100 text-sm md:text-base leading-relaxed" id="slide1Subline">بكل تقدير واعتزاز، نرحب بكافة الكوادر الطبية والإدارية المتميزة لمدينة الملك فهد الطبية. تم إعداد وتطوير هذه الأبراج السكنية المتميزة لتوفر لكم بيئة معيشية آمنة ومريحة تدعم استقراركم وتلبي تطلعاتكم.</p>
+                        <div class="pt-2">
+                            <button onclick="changeTab('registryView')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow transition text-sm flex items-center gap-2">
                                 <span id="btnHeroAction">البدء بتسجيل طلب التخصيص</span>
                                 <i class="fa-solid fa-arrow-left transform" id="heroArrowIcon"></i>
                             </button>
                         </div>
                     </div>
                 </div>
+
+                <!-- SLIDE 2 -->
+                <div class="carousel-slide p-8 md:p-14 flex flex-col justify-center min-h-[360px] text-start relative bg-gradient-to-r from-emerald-900 to-teal-900">
+                    <div class="max-w-3xl space-y-4 z-10">
+                        <span class="bg-teal-700/80 text-teal-100 border border-teal-500/30 font-semibold px-3 py-1 rounded-full text-xs uppercase inline-block" id="slide2Badge">آخر أخبار ومستجدات تجمع الرياض الثاني</span>
+                        <h2 class="text-3xl md:text-4xl font-bold leading-tight" id="slide2Headline">التكامل الرقمي وتطوير البنية التحتية لمنظومة الإسكان السكني</h2>
+                        <p class="text-emerald-100 text-sm md:text-base leading-relaxed" id="slide2Subline">يعلن تجمع الرياض الصحي الثاني عبر بوابته الرسمية عن إطلاق حزمة التحديثات الشاملة لرفع جودة حياة المستفيدين وتكامل الخدمات الذكية داخل الأبراج السكنية بما يتماشى مع مستهدفات رؤية 2030.</p>
+                        <div class="pt-2">
+                            <a href="https://www.rc2.med.sa/ar/Pages/default.aspx" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl border border-white/30 transition text-sm inline-flex items-center gap-2">
+                                <span id="btnNews1Action">زيارة المركز الإعلامي للتجمع</span>
+                                <i class="fa-solid fa-square-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="carousel-slide p-8 md:p-14 flex flex-col justify-center min-h-[360px] text-start relative bg-gradient-to-r from-emerald-950 to-slate-900">
+                    <div class="max-w-3xl space-y-4 z-10">
+                        <span class="bg-amber-600/40 text-amber-200 border border-amber-500/30 font-semibold px-3 py-1 rounded-full text-xs uppercase inline-block" id="slide3Badge">مستجدات مدينة الملك فهد الطبية</span>
+                        <h2 class="text-3xl md:text-4xl font-bold leading-tight" id="slide3Headline">التميز الطبي العالمي والرعاية المتكاملة من قلب العاصمة</h2>
+                        <p class="text-emerald-100 text-sm md:text-base leading-relaxed" id="slide3Subline">استمراراً لمسيرة التميز والإنجازات الطبية، تعلن مدينة الملك فهد الطبية (KFMC) عن توسيع النطاق التشغيلي وتحديث المرافق اللوجستية المساندة لضمان بيئة عمل متميزة ومستقرة لجميع منسوبيها.</p>
+                        <div class="pt-2">
+                            <a href="https://www.kfmc.med.sa/" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-xl border border-white/30 transition text-sm inline-flex items-center gap-2">
+                                <span id="btnNews2Action">تصفح بوابة المدينة الطبية</span>
+                                <i class="fa-solid fa-hospital"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAROUSEL DOTS -->
+            <div class="absolute bottom-5 left-8 flex gap-2 z-20">
+                <button onclick="setCarouselSlide(0)" class="w-6 h-2.5 rounded-full bg-emerald-400 transition-all" id="carouselDot0"></button>
+                <button onclick="setCarouselSlide(1)" class="w-2.5 h-2.5 rounded-full bg-white/40 transition-all" id="carouselDot1"></button>
+                <button onclick="setCarouselSlide(2)" class="w-2.5 h-2.5 rounded-full bg-white/40 transition-all" id="carouselDot2"></button>
             </div>
         </div>
 
-        <section class="grid grid-cols-2 lg:grid-cols-4 gap-5 text-start">
-            <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center gap-4">
-                <div class="p-3 bg-teal-50 text-brand-blue rounded-xl text-xl"><i class="fa-solid fa-building"></i></div>
-                <div><span class="text-xs text-gray-400 font-bold uppercase block" id="stat1Lbl">عدد الأبراج</span><span class="text-2xl font-black text-brand-blue font-mono">8</span></div>
+        <!-- QUICK STATS METRICS BLOCK -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-emerald-900 text-white p-5 rounded-xl border border-emerald-700 shadow-sm text-center">
+                <div class="text-3xl font-extrabold text-emerald-300 font-mono">8</div>
+                <div class="text-xs text-emerald-100 mt-1 font-semibold" id="stat1Lbl">عدد الأبراج (Towers)</div>
             </div>
-            <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center gap-4">
-                <div class="p-3 bg-teal-50 text-brand-blue rounded-xl text-xl"><i class="fa-solid fa-door-open"></i></div>
-                <div><span class="text-xs text-gray-400 font-bold uppercase block" id="stat2Lbl">إجمالي الوحدات</span><span class="text-2xl font-black text-brand-blue font-mono">899</span></div>
+            <div class="bg-emerald-900 text-white p-5 rounded-xl border border-emerald-700 shadow-sm text-center">
+                <div class="text-3xl font-extrabold text-emerald-300 font-mono">899</div>
+                <div class="text-xs text-emerald-100 mt-1 font-semibold" id="stat2Lbl">إجمالي الوحدات (Units)</div>
             </div>
-            <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center gap-4">
-                <div class="p-3 bg-teal-50 text-brand-blue rounded-xl text-xl"><i class="fa-solid fa-users"></i></div>
-                <div><span class="text-xs text-gray-400 font-bold uppercase block" id="stat3Lbl">السعة الكلية</span><span class="text-2xl font-black text-brand-blue font-mono">2,996</span></div>
+            <div class="bg-emerald-900 text-white p-5 rounded-xl border border-emerald-700 shadow-sm text-center">
+                <div class="text-3xl font-extrabold text-emerald-300 font-mono">2,996</div>
+                <div class="text-xs text-emerald-100 mt-1 font-semibold" id="stat3Lbl">السعة الكلية (Capacity)</div>
             </div>
-            <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center gap-4">
-                <div class="p-3 bg-teal-50 text-brand-blue rounded-xl text-xl"><i class="fa-solid fa-user-friends"></i></div>
-                <div><span class="text-xs text-gray-400 font-bold uppercase block" id="stat4Lbl">غرف مشتركة</span><span class="text-2xl font-black text-brand-blue font-mono">1,798</span></div>
+            <div class="bg-emerald-900 text-white p-5 rounded-xl border border-emerald-700 shadow-sm text-center">
+                <div class="text-3xl font-extrabold text-emerald-300 font-mono">1,798</div>
+                <div class="text-xs text-emerald-100 mt-1 font-semibold" id="stat4Lbl">سعة الغرف المشتركة</div>
+            </div>
+        </section>
+
+        <!-- FLOORS SPECIFICATIONS TABLE MATRIX -->
+        <section class="bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm text-start space-y-6">
+            <div>
+                <h3 class="text-xl font-bold text-emerald-900 border-r-4 border-emerald-600 pr-3" id="floorMatrixTitle">استعراض تفاصيل ومواصفات الأدوار السكنية</h3>
+                <p class="text-xs text-slate-500 mt-1" id="floorMatrixDesc">اضغط على زر الدور المعني بالأسفل لتحديث لوحة المواصفات الهندسية فوراً.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-slate-100 p-1.5 rounded-xl text-xs md:text-sm font-bold text-center">
+                <button onclick="toggleFloorMatrix('ground')" id="btnMat_ground" class="py-2.5 rounded-lg bg-emerald-800 text-white shadow font-medium">الدور الأرضي</button>
+                <button onclick="toggleFloorMatrix('first')" id="btnMat_first" class="py-2.5 rounded-lg text-slate-600 hover:bg-white/60 font-medium">الدور الأول</button>
+                <button onclick="toggleFloorMatrix('mid')" id="btnMat_mid" class="py-2.5 rounded-lg text-slate-600 hover:bg-white/60 font-medium">الأدوار (2 - 7)</button>
+                <button onclick="toggleFloorMatrix('high')" id="btnMat_high" class="py-2.5 rounded-lg text-slate-600 hover:bg-white/60 font-medium">الأدوار (8 - 14)</button>
+            </div>
+
+            <div id="floorMatrixOutputContainer" class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50"></div>
+        </section>
+
+        <!-- APARTMENT SPECIFICATIONS & BLUEPRINT EXPLORER -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 text-start">
+            <div class="lg:col-span-6 space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold text-emerald-900 border-r-4 border-emerald-600 pr-3" id="unitSpecsTitle">خيارات وأنواع الوحدات السكنية المتاحة</h3>
+                    <p class="text-xs text-slate-500 mt-1" id="unitSpecsDesc">بيئة سكنية عملية وعصرية مجهزة بكافة الاحتياجات اللوجستية المتقدمة لراحتكم.</p>
+                </div>
+
+                <div class="flex gap-3 bg-slate-200 p-1 rounded-xl text-xs font-bold w-fit">
+                    <button onclick="toggleUnitExplorer('single')" id="btnUnit_single" class="px-4 py-2 rounded-lg bg-emerald-800 text-white shadow">وحدة منفردة</button>
+                    <button onclick="toggleUnitExplorer('shared')" id="btnUnit_shared" class="px-4 py-2 rounded-lg text-slate-600 hover:bg-white/60">وحدة مشتركة</button>
+                </div>
+
+                <p id="unitTypeSummaryParagraph" class="text-xs md:text-sm text-slate-600 leading-relaxed bg-white p-4 rounded-xl border border-slate-200">
+                    غرفة مخصصة لساكنة واحدة، توفر الخصوصية والراحة الكاملة ومجهزة لتلبية كافة متطلبات الإقامة والعمل اليومي الكفؤ.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 text-center text-[10px] md:text-xs font-bold text-emerald-900">
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-snowflake text-emerald-600 text-sm block"></i><span id="am1">تكييف مركزي</span></div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-wifi text-emerald-600 text-sm block"></i><span id="am2">واي فاي مجاني</span></div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-sink text-emerald-600 text-sm block"></i><span id="am3">مطبخ مجهز</span></div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-restroom text-emerald-600 text-sm block"></i><span id="am4">حمام خاص **</span></div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-desktop text-emerald-600 text-sm block"></i><span id="am5">مكتب دراسي</span></div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-1"><i class="fa-solid fa-shirt text-emerald-600 text-sm block"></i><span id="am6">خزانة ملابس</span></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 bg-white p-4 rounded-xl border border-slate-200 flex flex-col justify-between shadow-sm">
+                <span class="text-xs text-emerald-900 font-bold border-b pb-2 flex justify-between items-center">
+                    <span id="lblBlTitle">مخطط توزيع مرافق الوحدة السكنية المعماري</span>
+                    <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-[10px] font-mono font-bold">PRACTICAL PLAN</span>
+                </span>
+                
+                <div class="py-6 flex items-center justify-center bg-slate-50 rounded-xl my-3 border border-slate-100" id="blueprintVisualExplorerBox"></div>
+
+                <div class="grid grid-cols-4 gap-2 text-center text-[10px] text-slate-500 border-t pt-2" id="blueprintLegendIconsMatrix">
+                    <div><i class="fa-solid fa-bed text-emerald-700 block text-xs mb-0.5"></i><span id="leg1">غرفة النوم</span></div>
+                    <div><i class="fa-solid fa-bath text-emerald-700 block text-xs mb-0.5"></i><span id="leg2">الحمام الخاص</span></div>
+                    <div><i class="fa-solid fa-utensils text-emerald-700 block text-xs mb-0.5"></i><span id="leg3">المطبخ الصغير</span></div>
+                    <div><i class="fa-solid fa-couch text-emerald-700 block text-xs mb-0.5"></i><span id="leg4">الجلسة الداخلية</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXTENDED AMENITIES MATRIX -->
+        <section class="space-y-6">
+            <div class="text-start">
+                <h3 class="text-xl font-bold text-emerald-900 border-r-4 border-emerald-600 pr-3" id="lblExtendedAmenitiesTitle">مرافق وخدمات الرفاهية والراحة المتكاملة للأبراج</h3>
+                <p class="text-xs text-slate-500 mt-1" id="lblExtendedAmenitiesDesc">حياة عصرية تجمع بين الراحة، الجودة العالية، وتلبية الاحتياجات اليومية دون عناء.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-start text-xs">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-water-ladder text-emerald-600 ml-1"></i> <span id="exAm1">المسابح الخارجية الفاخرة</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm1D">مسبحان خارجيان مجهزان يتيحان للساكنات الاسترخاء وممارسة السباحة في أجواء هادئة ومميزة.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-dumbbell text-emerald-600 ml-1"></i> <span id="exAm2">النادي الرياضي واللياقة</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm2D">صالة رياضية متكاملة داخل الأبراج مجهزة بأحدث الأجهزة لدعم النشاط البدني والصحة والعافية.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-shop text-emerald-600 ml-1"></i> <span id="exAm3">سوبرماركت داخلي متكامل</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm3D">يوفر كافة المستلزمات والمواد الغذائية اليومية مع ميزة التوصيل المباشر للأبواب والغرف السكنية.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-book-reader text-emerald-600 ml-1"></i> <span id="exAm4">غرف ومساحات قراءة هادئة</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm4D">قاعة قراءة مستقلة في كل برج صممت لتوفير بيئة تركيز مثالية ومزودة بكتب ومراجع متنوعة.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-socks text-emerald-600 ml-1"></i> <span id="exAm5">المغسلة المركزية الحديثة</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm5D">مجهزة بأحدث أجهزة الغسيل والتجفيف الآلي لتقديم خدمات معيشية مريحة ومنظمة.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-chair text-emerald-600 ml-1"></i> <span id="exAm6">جلسات خارجية أنيقة (برجولات)</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm6D">مجالس خشبية مظللة بتصاميم راقية تمنح منسوبي المجمع مساحات مثالية للاستراحة واللقاء.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-parking text-emerald-600 ml-1"></i> <span id="exAm7">مواقف سيارات منظمة وخاصة</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm7D">مواقف مظللة ومخصصة تضمن سهولة الوصول للمباني وتخضع لمراقبة أمنية متكاملة على مدار الساعة.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                    <div class="text-emerald-800 font-bold text-sm"><i class="fa-solid fa-tree text-emerald-600 ml-1"></i> <span id="exAm8">ممرات ربط ساحات ومساحات خضراء</span></div>
+                    <p class="text-slate-500 text-[11px] leading-relaxed" id="exAm8D">ممرات عريضة تضمن تنقلاً آمناً وسلساً بين الأبراج والحدائق المحيطة لتعزيز جودة الحياة.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT CHANNELS ON FRONT PAGE -->
+        <section class="bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm text-start space-y-6">
+            <div class="border-b pb-3">
+                <h3 class="text-xl font-bold text-emerald-900 border-r-4 border-emerald-600 pr-3" id="lblFrontContactTitle">قنوات الاتصال والدعم الفني للمجمع</h3>
+                <p class="text-xs text-slate-500 mt-1" id="lblFrontContactDesc">يسعدنا تواصلكم معنا عبر القنوات الرسمية الموحدة لتجمع الرياض الصحي الثاني</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-800 text-white flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-phone-volume"></i></div>
+                    <div><h4 class="font-semibold text-xs text-slate-400 block" id="lblC1">الهاتف المجاني</h4><span class="text-base font-bold text-emerald-900 font-mono block mt-0.5">8001277000</span></div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-800 text-white flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <div class="overflow-hidden"><h4 class="font-semibold text-xs text-slate-400 block" id="lblC2">البريد الإلكتروني الموحد</h4><a href="mailto:RRS@kfmc.med.sa" class="text-sm font-bold text-emerald-900 font-mono block mt-1 hover:underline truncate">RRS@kfmc.med.sa</a></div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-800 text-white flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-fax"></i></div>
+                    <div><h4 class="font-semibold text-xs text-slate-400 block" id="lblC3">الفاكس الرسمي</h4><span class="text-sm font-bold text-emerald-900 font-mono block mt-1 tracking-wide">+966 11 4006461</span></div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-800 text-white flex items-center justify-center text-lg shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div><h4 class="font-semibold text-xs text-slate-400 block" id="lblC4">العنوان البريدي</h4><span class="text-xs font-bold text-emerald-900 block mt-1" id="lblC4Val">ص.ب 59046 الرياض 11525</span></div>
+                </div>
             </div>
         </section>
     </div>
@@ -126,14 +301,14 @@
     <div id="registryView" class="hidden max-w-7xl mx-auto px-4 py-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-8 text-start">
         <div class="lg:col-span-7 space-y-8">
             <!-- LOOKUP ENGINE -->
-            <div class="bg-slate-50 rounded-xl shadow border border-brand-blue/20 p-6 space-y-4">
-                <h2 class="text-base font-bold text-brand-blue flex items-center gap-2" id="lblLookupTitle">الاستعلام عن حالة الطلب للموظفين العائدين</h2>
+            <div class="bg-emerald-50/60 rounded-xl shadow-sm border border-emerald-200 p-6 space-y-4">
+                <h2 class="text-base font-bold text-emerald-900 flex items-center gap-2" id="lblLookupTitle">الاستعلام عن حالة الطلب للموظفين العائدين</h2>
                 <div class="flex flex-col sm:flex-row gap-3 items-end">
                     <div class="flex-grow">
-                        <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblLookupLabel">أدخل رقم الهوية الوطنية / جواز السفر *</label>
-                        <input type="text" id="inp_lookup_id" class="w-full border border-gray-300 rounded-lg p-2 text-sm outline-none focus:border-brand-blue font-mono">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblLookupLabel">أدخل رقم الهوية الوطنية / جواز السفر *</label>
+                        <input type="text" id="inp_lookup_id" class="w-full border border-slate-300 rounded-lg p-2 text-sm outline-none focus:border-emerald-600 font-mono">
                     </div>
-                    <button onclick="checkReturningApplicantStatus()" class="bg-brand-blue hover:bg-teal-800 text-white font-bold px-6 py-2 rounded-lg text-sm transition shrink-0 h-[38px] flex items-center gap-2">
+                    <button onclick="checkReturningApplicantStatus()" class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold px-6 py-2 rounded-lg text-sm transition shrink-0 h-[38px] flex items-center gap-2">
                         <i class="fa-solid fa-search"></i><span id="btnLookup">استعلام</span>
                     </button>
                 </div>
@@ -141,86 +316,84 @@
             </div>
 
             <!-- REGISTRATION FORM -->
-            <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200 space-y-6">
-                <h2 class="text-xl font-bold text-brand-blue border-b pb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-clipboard-list text-brand-gold"></i><span id="lblSectionTitle">تقديم طلب تخصيص مساحة سكنية جديدة</span>
+            <div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 space-y-6">
+                <h2 class="text-xl font-bold text-emerald-900 border-b pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-list text-emerald-600"></i><span id="lblSectionTitle">تقديم طلب تخصيص مساحة سكنية جديدة</span>
                 </h2>
 
                 <div class="space-y-3">
-                    <h3 class="text-xs font-bold uppercase text-gray-400 tracking-wider" id="lblStep1">الخطوة 1: تسجيل بيانات الساكن</h3>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 tracking-wider" id="lblStep1">الخطوة 1: تسجيل بيانات الساكن</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblFullName">الاسم الكامل *</label>
-                            <input type="text" id="inp_name" class="w-full border border-gray-300 rounded-lg p-2 text-sm outline-none focus:border-brand-blue">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblFullName">الاسم الكامل *</label>
+                            <input type="text" id="inp_name" class="w-full border border-slate-300 rounded-lg p-2 text-sm outline-none focus:border-emerald-600">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblPhone">رقم الجوال *</label>
-                            <input type="tel" id="inp_phone" placeholder="05xxxxxxxx" class="w-full border border-gray-300 rounded-lg p-2 text-sm outline-none focus:border-brand-blue">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblPhone">رقم الجوال *</label>
+                            <input type="tel" id="inp_phone" placeholder="05xxxxxxxx" class="w-full border border-slate-300 rounded-lg p-2 text-sm outline-none focus:border-emerald-600">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblGuestId">الهوية الوطنية / الجواز *</label>
-                            <input type="text" id="inp_id" class="w-full border border-gray-300 rounded-lg p-2 text-sm outline-none focus:border-brand-blue">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblGuestId">الهوية الوطنية / الجواز *</label>
+                            <input type="text" id="inp_id" class="w-full border border-slate-300 rounded-lg p-2 text-sm outline-none focus:border-emerald-600">
                         </div>
                     </div>
                 </div>
 
                 <div class="space-y-3">
-                    <h3 class="text-xs font-bold uppercase text-gray-400 tracking-wider" id="lblStep2">الخطوة 2: اختيار مبنى البرج</h3>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 tracking-wider" id="lblStep2">الخطوة 2: اختيار مبنى البرج</h3>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblSpecificTower">أبراج السكن المتاحة (أ - ح)</label>
-                        <select id="sel_tower" onchange="runEngineTowerUpdate()" class="w-full border border-gray-300 bg-white rounded-lg p-2.5 text-sm outline-none font-bold text-brand-blue">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblSpecificTower">أبراج السكن المتاحة (أ - ح)</label>
+                        <select id="sel_tower" onchange="runEngineTowerUpdate()" class="w-full border border-slate-300 bg-white rounded-lg p-2.5 text-sm outline-none font-bold text-emerald-900">
                         </select>
                     </div>
                 </div>
 
                 <div class="space-y-3">
-                    <h3 class="text-xs font-bold uppercase text-gray-400 tracking-wider" id="lblStep3">الخطوة 3: الدور ونوع الغرفة</h3>
+                    <h3 class="text-xs font-bold uppercase text-slate-400 tracking-wider" id="lblStep3">الخطوة 3: الدور ونوع الغرفة</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblFloor">تحديد الدور</label>
-                            <select id="sel_floor" onchange="runEngineFloorUpdate()" class="w-full border border-gray-300 bg-white rounded-lg p-2 text-sm outline-none">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblFloor">تحديد الدور</label>
+                            <select id="sel_floor" onchange="runEngineFloorUpdate()" class="w-full border border-slate-300 bg-white rounded-lg p-2 text-sm outline-none">
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-600 mb-1" id="lblRoom">اختر الغرفة / الوحدة المتاحة</label>
-                            <select id="sel_room" onchange="renderLivePreviewAndSpecs()" class="w-full border border-gray-300 bg-white rounded-lg p-2 text-sm outline-none">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1" id="lblRoom">اختر الغرفة / الوحدة المتاحة</label>
+                            <select id="sel_room" onchange="renderLivePreviewAndSpecs()" class="w-full border border-slate-300 bg-white rounded-lg p-2 text-sm outline-none">
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <button onclick="executeAllocationProcess()" class="w-full bg-brand-gold hover:bg-amber-600 text-brand-blue font-bold py-4 px-6 rounded-xl shadow-md transition-all text-center flex items-center justify-center gap-2 text-base">
+                <button onclick="executeAllocationProcess()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 px-6 rounded-xl shadow transition-all text-center flex items-center justify-center gap-2 text-base">
                     <i class="fa-solid fa-building-circle-check"></i><span id="btnSubmit">اعتماد تخصيص الوحدة السكنية</span>
                 </button>
             </div>
         </div>
 
-        <!-- SCHEMATIC GRAPHICS PANEL -->
         <div class="lg:col-span-5 flex flex-col gap-6">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                <div class="bg-brand-blue text-white px-4 py-3 font-semibold text-xs flex justify-between items-center">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200">
+                <div class="bg-emerald-900 text-white px-4 py-3 font-semibold text-xs flex justify-between items-center">
                     <span id="previewHeaderTitle">المخطط الهندسي للدور</span>
-                    <span class="text-[10px] bg-brand-gold text-brand-blue px-2 py-0.5 rounded font-bold font-mono">SCHEMATIC</span>
+                    <span class="text-[10px] bg-emerald-400 text-emerald-950 px-2 py-0.5 rounded font-bold font-mono">SCHEMATIC</span>
                 </div>
                 <div class="p-6 bg-slate-50 flex items-center justify-center min-h-[260px]">
                     <div id="svgContainer" class="w-full max-w-sm"></div>
                 </div>
-                <div id="specDisplaySheet" class="p-4 bg-brand-blue text-slate-200 text-xs space-y-2 border-t border-brand-gold"></div>
+                <div id="specDisplaySheet" class="p-4 bg-emerald-900 text-slate-100 text-xs space-y-2 border-t border-emerald-600"></div>
             </div>
         </div>
     </div>
 
-    <!-- ================= VIEW 3: INTEGRATED EMPLOYEE APPROVAL DASHBOARD ================= -->
+    <!-- ================= VIEW 3: INTEGRATED EMPLOYEE DASHBOARD ================= -->
     <div id="employeeView" class="hidden max-w-7xl mx-auto px-4 py-8 flex-grow w-full space-y-6 text-start">
         
-        <!-- DASHBOARD STATS -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
                 <div>
-                    <span class="text-xs text-gray-400 font-bold block" id="lblTotalApps">إجمالي الطلبات</span>
-                    <span id="cnt-total" class="text-2xl font-black text-brand-blue font-mono">0</span>
+                    <span class="text-xs text-slate-400 font-bold block" id="lblTotalApps">إجمالي الطلبات</span>
+                    <span id="cnt-total" class="text-2xl font-black text-emerald-900 font-mono">0</span>
                 </div>
-                <div class="p-3 bg-teal-50 text-brand-blue rounded-xl text-lg"><i class="fa-solid fa-folder-open"></i></div>
+                <div class="p-3 bg-emerald-50 text-emerald-800 rounded-xl text-lg"><i class="fa-solid fa-folder-open"></i></div>
             </div>
 
             <div class="bg-white p-5 rounded-2xl border border-amber-200 shadow-sm flex items-center justify-between">
@@ -248,14 +421,13 @@
             </div>
         </div>
 
-        <!-- APPLICATIONS TABLE -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden space-y-4 p-6">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden space-y-4 p-6">
             <div class="flex justify-between items-center border-b pb-4">
-                <h2 class="text-lg font-bold text-brand-blue flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-brand-gold"></i>
+                <h2 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-emerald-600"></i>
                     <span id="lblTableTitle">طلبات التخصيص المقدمة من المنسوبين</span>
                 </h2>
-                <button onclick="renderEmployeeDashboard()" class="text-xs bg-slate-100 hover:bg-slate-200 text-gray-600 font-bold px-3 py-2 rounded-lg transition flex items-center gap-1">
+                <button onclick="renderEmployeeDashboard()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold px-3 py-2 rounded-lg transition flex items-center gap-1">
                     <i class="fa-solid fa-arrows-rotate"></i>
                     <span id="btnRefresh">تحديث القائمة</span>
                 </button>
@@ -264,7 +436,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-start text-xs md:text-sm">
                     <thead>
-                        <tr class="bg-slate-50 text-gray-500 font-bold border-b border-gray-200">
+                        <tr class="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
                             <th class="p-3" id="thName">اسم المتقدم / الهوية</th>
                             <th class="p-3" id="thPhone">رقم الجوال</th>
                             <th class="p-3" id="thHousing">السكن المطلوب (البرج / الدور / الغرفة)</th>
@@ -273,26 +445,25 @@
                             <th class="p-3 text-center" id="thActions">الإجراء المتاح</th>
                         </tr>
                     </thead>
-                    <tbody id="app-table-body" class="divide-y divide-gray-100">
+                    <tbody id="app-table-body" class="divide-y divide-slate-100">
                     </tbody>
                 </table>
             </div>
 
-            <!-- EMPTY STATE -->
             <div id="empty-state" class="hidden text-center py-12 space-y-3">
-                <div class="w-16 h-16 bg-slate-100 text-gray-400 rounded-full flex items-center justify-center text-2xl mx-auto"><i class="fa-solid fa-inbox"></i></div>
-                <p class="text-gray-500 font-bold text-sm" id="txtEmptyTitle">لا توجد طلبات سكن متوفرة حالياً</p>
-                <p class="text-gray-400 text-xs" id="txtEmptySub">عند التقديم عبر تبويب "منظومة التخصيص" ستظهر الطلبات هنا فوراً.</p>
+                <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-2xl mx-auto"><i class="fa-solid fa-inbox"></i></div>
+                <p class="text-slate-500 font-bold text-sm" id="txtEmptyTitle">لا توجد طلبات سكن متوفرة حالياً</p>
+                <p class="text-slate-400 text-xs" id="txtEmptySub">عند التقديم عبر تبويب 'منظومة التخصيص' ستظهر الطلبات هنا فوراً.</p>
             </div>
         </div>
     </div>
 
     <!-- POP-UP CONFIRMATION MODAL -->
-    <div id="successModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border-t-8 border-amber-500 overflow-hidden transform scale-95 transition-transform duration-300 relative">
-            <div class="bg-gradient-to-r from-brand-blue to-teal-900 p-5 text-white flex justify-between items-center">
+    <div id="successModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border-t-8 border-emerald-600 overflow-hidden relative">
+            <div class="bg-emerald-900 p-5 text-white flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                    <div class="bg-amber-500 text-brand-blue rounded-full p-1.5 text-xs flex items-center justify-center font-bold">
+                    <div class="bg-emerald-500 text-emerald-950 rounded-full p-1.5 text-xs flex items-center justify-center font-bold">
                         <i class="fa-solid fa-spinner animate-spin"></i>
                     </div>
                     <h3 class="font-black text-sm md:text-base" id="lblModalTitle">تم استلام طلب التخصيص بنجاح</h3>
@@ -300,28 +471,45 @@
                 <button onclick="closeSuccessPopUp()" class="text-white/70 hover:text-white transition text-lg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="p-6 space-y-4 text-sm text-start" id="modalReceiptBody"></div>
-            <div class="bg-gray-50 px-6 py-4 border-t border-gray-100 flex justify-end">
-                <button onclick="closeSuccessPopUp()" class="bg-brand-blue hover:bg-teal-800 text-white font-bold px-5 py-2 rounded-lg text-xs transition" id="lblModalCloseBtn">إغلاق ومتابعة حالة الطلب</button>
+            <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeSuccessPopUp()" class="bg-emerald-800 hover:bg-emerald-700 text-white font-bold px-5 py-2 rounded-lg text-xs transition" id="lblModalCloseBtn">إغلاق ومتابعة حالة الطلب</button>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER CHANNELS BLOCK -->
-    <footer class="bg-white border-t border-gray-200 text-gray-600 text-xs py-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p id="footerText" class="font-semibold text-gray-700">جميع الحقوق محفوظة © تجمع الرياض الصحي الثاني</p>
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-6 mt-12 text-xs">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p id="footerText" class="font-semibold text-slate-300">جميع الحقوق محفوظة © تجمع الرياض الصحي الثاني - شركة الصحة القابضة</p>
+            <p class="text-slate-500">مدينة الملك فهد الطبية - الرياض | هاتف: 8001277000 | RRS@kfmc.med.sa</p>
         </div>
     </footer>
 
     <!-- INTERACTION LOGIC ENGINE -->
     <script>
         let currentLang = 'ar'; 
-        let globalApplicationsList = []; // In-memory state storage
+        let globalApplicationsList = [];
+        let carouselIndex = 0;
+        let carouselInterval;
 
         const dictionary = {
             en: {
-                txtTabInfo: "Overview Hub", txtTabRegistry: "Allocation Registry", txtTabEmployee: "Employee Approval Portal", btnLangText: "العربية",
-                stat1Lbl: "Total Towers", stat2Lbl: "Total Units", stat3Lbl: "Overall Capacity", stat4Lbl: "Shared Units",
+                "header-title": "Riyadh Second Health Cluster",
+                "header-subtitle": "Sakina Complex - Employees Housing Towers",
+                txtTabInfo: "Overview Hub", txtTabRegistry: "Allocation Registry", txtTabEmployee: "Employee Portal", btnLangText: "العربية",
+                slide1Badge: "King Fahad Medical City Housing",
+                slide1Headline: "Welcome to Sakina Complex | Luxury Housing for Healthcare Heroes",
+                slide1Subline: "We proudly welcome the medical and administrative staff of King Fahad Medical City. These dedicated housing towers are custom-built to guarantee maximum comfort and safety.",
+                btnHeroAction: "Initiate Allocation Request",
+                slide2Badge: "Riyadh Health Cluster 2 News",
+                slide2Headline: "Digital Integration & Infrastructure Evolution Across Residential Complexes",
+                slide2Subline: "Riyadh Second Health Cluster officially activates automated housing workflows to improve recipient quality of life in line with Vision 2030.",
+                btnNews1Action: "Visit Cluster Media Hub",
+                slide3Badge: "KFMC Highlights",
+                slide3Headline: "Global Medical Excellence and Integrated Care from Capital Heart",
+                slide3Subline: "King Fahad Medical City continues expanding operational logistics to ensure a stable and luxurious living environment for its medical personnel.",
+                btnNews2Action: "Explore Medical City Portal",
+                stat1Lbl: "Towers Count", stat2Lbl: "Total Units", stat3Lbl: "Total Capacity", stat4Lbl: "Shared Rooms",
                 lblSectionTitle: "Submit New Housing Allocation Request",
                 lblStep1: "Step 1: Occupant Registration Profiles", lblFullName: "Full Name *", lblPhone: "Phone Number *", lblGuestId: "National ID / Passport *",
                 lblStep2: "Step 2: Select Operational Tower Block", lblSpecificTower: "Available Infrastructure Complexes (Towers A - H)",
@@ -335,11 +523,27 @@
                 lblTableTitle: "Housing Allocation Applications", btnRefresh: "Refresh List",
                 thName: "Applicant / ID", thPhone: "Mobile", thHousing: "Requested Room Location", thTracking: "Tracking ID & Date", thStatus: "Status", thActions: "Actions",
                 txtEmptyTitle: "No applications found", txtEmptySub: "Submit a request in 'Allocation Registry' tab to view real entries here immediately.",
-                btnApprove: "Approve", btnReject: "Reject", stApproved: "Approved", stRejected: "Rejected", stPending: "Pending Review"
+                btnApprove: "Approve", btnReject: "Reject", stApproved: "Approved", stRejected: "Rejected", stPending: "Pending Review",
+                lblFrontContactTitle: "Contact & Technical Support Channels", lblFrontContactDesc: "Reach out via our official communication pathways",
+                lblC1: "Toll Free", lblC2: "Official Email", lblC3: "Official Fax", lblC4: "Postal Address", lblC4Val: "P.O. Box 59046 Riyadh 11525"
             },
             ar: {
+                "header-title": "تجمع الرياض الصحي الثاني",
+                "header-subtitle": "صرحُ السكينة - الأبراج السكنية لمنسوبي التجمع",
                 txtTabInfo: "دليل المجمع", txtTabRegistry: "منظومة التخصيص", txtTabEmployee: "لوحة الموظفين والاعتماد", btnLangText: "English",
-                stat1Lbl: "عدد الأبراج", stat2Lbl: "إجمالي الوحدات", stat3Lbl: "السعة الكلية", stat4Lbl: "غرف مشتركة",
+                slide1Badge: "إسكان مدينة الملك فهد الطبية",
+                slide1Headline: "مرحباً بكم في صرح السكينة | سكن فاخر يليق بكوادر الصحة",
+                slide1Subline: "بكل تقدير واعتزاز، نرحب بكافة الكوادر الطبية والإدارية المتميزة لمدينة الملك فهد الطبية. تم إعداد وتطوير هذه الأبراج السكنية المتميزة لتوفر لكم بيئة معيشية آمنة ومريحة تدعم استقراركم وتلبي تطلعاتكم.",
+                btnHeroAction: "البدء بتسجيل طلب التخصيص",
+                slide2Badge: "آخر أخبار ومستجدات تجمع الرياض الثاني",
+                slide2Headline: "التكامل الرقمي وتطوير البنية التحتية لمنظومة الإسكان السكني",
+                slide2Subline: "يعلن تجمع الرياض الصحي الثاني عبر بوابته الرسمية عن إطلاق حزمة التحديثات الشاملة لرفع جودة حياة المستفيدين، وتكامل الخدمات الذكية داخل المجمعات والأبراج السكنية، بما يتماشى مع مستهدفات رؤية المملكة 2030 للتحول الرقمي المستدام.",
+                btnNews1Action: "زيارة المركز الإعلامي للتجمع",
+                slide3Badge: "مستجدات مدينة الملك فهد الطبية",
+                slide3Headline: "التميز الطبي العالمي والرعاية المتكاملة من قلب العاصمة",
+                slide3Subline: "استمراراً لمسيرة التميز والإنجازات الطبية، تعلن مدينة الملك فهد الطبية (KFMC) عن توسيع النطاق التشغيلي وتحديث المرافق اللوجستية المساندة لضمان بيئة عمل متميزة ومستقرة لجميع منسوبيها.",
+                btnNews2Action: "تصفح بوابة المدينة الطبية",
+                stat1Lbl: "عدد الأبراج (Towers)", stat2Lbl: "إجمالي الوحدات (Units)", stat3Lbl: "السعة الكلية (Capacity)", stat4Lbl: "سعة الغرف المشتركة",
                 lblSectionTitle: "تقديم طلب تخصيص مساحة سكنية جديدة",
                 lblStep1: "الخطوة 1: تسجيل بيانات الساكن", lblFullName: "الاسم الكامل *", lblPhone: "رقم الجوال *", lblGuestId: "الهوية الوطنية / جواز السفر *",
                 lblStep2: "الخطوة 2: اختيار مبنى البرج", lblSpecificTower: "أبراج السكن المتاحة (أ - ح)",
@@ -353,22 +557,31 @@
                 lblTableTitle: "طلبات التخصيص المقدمة من المنسوبين", btnRefresh: "تحديث القائمة",
                 thName: "اسم المتقدم / الهوية", thPhone: "رقم الجوال", thHousing: "السكن المطلوب (البرج / الدور / الغرفة)", thTracking: "رقم التتبع والتاريخ", thStatus: "حالة الطلب", thActions: "الإجراء المتاح",
                 txtEmptyTitle: "لا توجد طلبات سكن متوفرة حالياً", txtEmptySub: "عند التقديم عبر تبويب 'منظومة التخصيص' ستظهر الطلبات هنا فوراً.",
-                btnApprove: "قبول", btnReject: "رفض", stApproved: "مقبول", stRejected: "مرفوض", stPending: "قيد المراجعة"
+                btnApprove: "قبول", btnReject: "رفض", stApproved: "مقبول", stRejected: "مرفوض", stPending: "قيد المراجعة",
+                lblFrontContactTitle: "قنوات الاتصال والدعم الفني للمجمع", lblFrontContactDesc: "يسعدنا تواصلكم معنا عبر القنوات الرسمية الموحدة لتجمع الرياض الصحي الثاني",
+                lblC1: "الهاتف المجاني", lblC2: "البريد الإلكتروني الموحد", lblC3: "الفاكس الرسمي", lblC4: "العنوان البريدي", lblC4Val: "ص.ب 59046 الرياض 11525"
             }
+        };
+
+        const floorMatrixSpecsDatabase = {
+            ground: { titleAr: "بيانات وتفاصيل الدور الأرضي", titleEn: "Ground Floor Logs", rooms: "21 غرفة سكنية", capacity: "غرف فردية واسعة للمنسوبين", kitchenAr: "مطبخ مركزي مشترك مجهز بالكامل", kitchenEn: "Shared kitchen", laundryAr: "غرفة غسيل مشتركة", laundryEn: "Shared laundry", accessAr: "ردهة الاستقبال، السلالم والمصاعد", accessEn: "Main lobby, stairs and lifts", notesAr: "يحتوي الدور على مكتبين إداريين للموظفين لمتابعة شؤون السكان.", notesEn: "Includes two admin office suites for staff." },
+            first: { titleAr: "بيانات وتفاصيل الدور الأول", titleEn: "First Floor Logs", rooms: "26 غرفة فاخرة", capacity: "غرف فردية مع شرفات إطلالة", kitchenAr: "مطبخ خدمات متكامل", kitchenEn: "Equipped service kitchen", laundryAr: "غرفة غسيل مستقلة", laundryEn: "Autonomous laundry", accessAr: "سلالم الطوارئ والمصاعد", accessEn: "Stairs and lifts", notesAr: "تصميم يوفر خصوصية وشرفات خارجية مطلة على الحدائق.", notesEn: "Private balconies overlooking courts." },
+            mid: { titleAr: "بيانات الأدوار المشتركة (2 إلى 7)", titleEn: "Shared Floors (2 to 7)", rooms: "24 غرفة مشتركة في كل دور", capacity: "غرف سكنية مشتركة مخصصة", kitchenAr: "مطبخ مشترك كبير", kitchenEn: "Large shared kitchen", laundryAr: "حمامات وغسيل بكل دور", laundryEn: "Baths and laundry per floor", accessAr: "مصاعد وسلالم رأسية", accessEn: "Lifts and staircases", notesAr: "تضم غرف قراءة هادئة وصالة مشاهدة تلفاز بكل دور.", notesEn: "Includes TV lounge and study rooms." },
+            high: { titleAr: "بيانات الأدوار العليا (8 إلى 14)", titleEn: "High-Level Floors (8 to 14)", rooms: "26 غرفة فردية في كل دور", capacity: "غرف فردية ذات خصوصية عالية", kitchenAr: "مطبخ مشترك مجهز", kitchenEn: "Communal kitchen", laundryAr: "غرفة غسيل مشتركة", laundryEn: "Shared laundry", accessAr: "3 مصاعد وسلالم طوارئ", accessEn: "3 lifts and stairs", notesAr: "إطلالات بانورامية هادئة ورائعة على المدينة الطبية.", notesEn: "Peaceful panorama views." }
         };
 
         const databaseMatrix = {
             'AC_Blueprint': {
-                'Ground Floor': { rooms: 15, capacity: 1, typeAr: 'غرف سكنية منفردة قياسية', typeEn: 'Standard Solitary Residential Units', descAr: 'منطقة استقبال، مكاتب إدارية، مطبخ مركزي، صالة عامة.', descEn: 'Reception desks, admin office, shared main kitchen, lounge.' },
-                'First Floor': { rooms: 26, capacity: 1, typeAr: 'غرف سكنية منفردة بشرفات', typeEn: 'Balcony Solitary Residential Units', descAr: 'صالة عامة، غرف غسيل، مطبخ خدمات.', descEn: 'Communal lounge, laundry, kitchen.' },
-                'Second to Seventh Floor': { rooms: 22, capacity: 2, typeAr: 'غرف سكنية مشتركة', typeEn: 'Shared Structural Units', descAr: 'صالة عامة، غرفة قراءة، غسيل ومطبخ مشترك.', descEn: 'Reading room, laundry, shared kitchen.' },
-                'Eighth to Fourteenth Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة بالمستويات العليا', typeEn: 'Solitary High-Level Units', descAr: 'صالة مطلة، خدمات غسيل ومطبخ علوي.', descEn: 'Elevated view lounge, upper kitchen.' }
+                'Ground Floor': { rooms: 15, capacity: 1, typeAr: 'غرف سكنية منفردة قياسية', typeEn: 'Standard Solitary Units', descAr: 'منطقة استقبال، مكاتب إدارية، مطبخ مركزي، صالة عامة.', descEn: 'Reception desks, admin office, shared main kitchen, lounge.' },
+                'First Floor': { rooms: 26, capacity: 1, typeAr: 'غرف سكنية منفردة بشرفات', typeEn: 'Balcony Solitary Units', descAr: 'صالة عامة، غرف غسيل، مطبخ خدمات.', descEn: 'Communal lounge, laundry, kitchen.' },
+                'Second to Seventh Floor': { rooms: 22, capacity: 2, typeAr: 'غرف سكنية مشتركة', typeEn: 'Shared Units', descAr: 'صالة عامة، غرفة قراءة، غسيل ومطبخ مشترك.', descEn: 'Reading room, laundry, shared kitchen.' },
+                'Eighth to Fourteenth Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة علوية', typeEn: 'Solitary High Units', descAr: 'صالة مطلة، خدمات غسيل ومطبخ علوي.', descEn: 'Elevated view lounge, upper kitchen.' }
             },
             'BH_Blueprint': {
-                'Ground Floor': { rooms: 21, capacity: 1, typeAr: 'غرف منفردة - الدور الأرضي', typeEn: 'Ground Floor Solitary Spaces', descAr: 'استقبال رئيسي، مكاتب إدارية، صالة عامة.', descEn: 'Front check-in counter, admin desk, relaxation lounge.' },
-                'First Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة - الدور الأول', typeEn: 'First Floor Independent Units', descAr: 'صالة عامة، غرف غسيل، مطبخ خدمات.', descEn: 'Social gathering hall, laundry, utility kitchen.' },
-                'Second to Seventh Floor': { rooms: 24, capacity: 2, typeAr: 'غرف مشتركة', typeEn: 'Shared Dual-Occupant Units', descAr: 'صالة عامة، غرف تلفاز، غسيل ومطبخ.', descEn: 'TV lounge, quiet study environment, laundry.' },
-                'Eighth to Fourteenth Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة بالمستويات العليا', typeEn: 'Upper Tier Solitary Spaces', descAr: 'صالة عامة، غرف غسيل، مطبخ مجهز.', descEn: 'High level observation lounge, laundry bay.' }
+                'Ground Floor': { rooms: 21, capacity: 1, typeAr: 'غرف منفردة - الأرضي', typeEn: 'Ground Solitary Units', descAr: 'استقبال رئيسي، مكاتب إدارية، صالة عامة.', descEn: 'Front check-in counter, admin desk, relaxation lounge.' },
+                'First Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة - الأول', typeEn: 'First Floor Units', descAr: 'صالة عامة، غرف غسيل، مطبخ خدمات.', descEn: 'Social gathering hall, laundry, utility kitchen.' },
+                'Second to Seventh Floor': { rooms: 24, capacity: 2, typeAr: 'غرف مشتركة', typeEn: 'Shared Dual Units', descAr: 'صالة عامة، غرف تلفاز، غسيل ومطبخ.', descEn: 'TV lounge, quiet study environment, laundry.' },
+                'Eighth to Fourteenth Floor': { rooms: 26, capacity: 1, typeAr: 'غرف منفردة متميزة', typeEn: 'Upper Tier Units', descAr: 'صالة عامة، غرف غسيل، مطبخ مجهز.', descEn: 'High level observation lounge, laundry bay.' }
             }
         };
 
@@ -383,36 +596,57 @@
             { id: 'Tower H', ar: 'برج ح (373 وحدة)', en: 'Tower H (373 Units)', matrixKey: 'BH_Blueprint' }
         ];
 
+        function setCarouselSlide(idx) {
+            carouselIndex = idx;
+            updateCarouselLayout();
+            initAutomatedCarousel(); 
+        }
+
+        function initAutomatedCarousel() {
+            clearInterval(carouselInterval);
+            carouselInterval = setInterval(() => {
+                carouselIndex = (carouselIndex + 1) % 3;
+                updateCarouselLayout();
+            }, 5000); 
+        }
+
+        function updateCarouselLayout() {
+            const track = document.getElementById('heroCarouselTrack');
+            if(currentLang === 'ar') {
+                track.style.transform = `translateX(${carouselIndex * 33.333333}%)`;
+            } else {
+                track.style.transform = `translateX(-${carouselIndex * 33.333333}%)`;
+            }
+            for(let i=0; i<3; i++) {
+                const dot = document.getElementById(`carouselDot${i}`);
+                if(i === carouselIndex) {
+                    dot.className = "w-6 h-2.5 rounded-full bg-emerald-400 transition-all";
+                } else {
+                    dot.className = "w-2.5 h-2.5 rounded-full bg-white/40 transition-all";
+                }
+            }
+        }
+
         function changeTab(tabId) {
             document.getElementById('infoView').classList.add('hidden');
             document.getElementById('registryView').classList.add('hidden');
             document.getElementById('employeeView').classList.add('hidden');
             document.getElementById(tabId).classList.remove('hidden');
 
-            document.getElementById('tab_infoView').className = "px-3 py-1.5 rounded-lg text-white hover:bg-white/10";
-            document.getElementById('tab_registryView').className = "px-3 py-1.5 rounded-lg text-white hover:bg-white/10";
-            document.getElementById('tab_employeeView').className = "px-3 py-1.5 rounded-lg text-amber-300 hover:bg-white/10";
+            document.getElementById('tab_infoView').className = "px-3.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10";
+            document.getElementById('tab_registryView').className = "px-3.5 py-1.5 rounded-lg text-emerald-100 hover:bg-white/10";
+            document.getElementById('tab_employeeView').className = "px-3.5 py-1.5 rounded-lg text-amber-300 hover:bg-white/10";
             
-            document.getElementById('tab_' + tabId).className = "px-3 py-1.5 rounded-lg bg-brand-gold text-brand-blue shadow font-bold";
+            document.getElementById('tab_' + tabId).className = "px-3.5 py-1.5 rounded-lg bg-emerald-700 text-white shadow font-bold";
 
-            if (tabId === 'employeeView') {
-                renderEmployeeDashboard();
-            }
+            if (tabId === 'employeeView') renderEmployeeDashboard();
         }
 
         function toggleAppLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             const html = document.getElementById('htmlTag');
-            
-            if(currentLang === 'ar') {
-                html.setAttribute('dir', 'rtl');
-                html.setAttribute('lang', 'ar');
-                document.body.className = "bg-brand-lightBg text-brand-darkText min-h-screen flex flex-col justify-between transition-all duration-300 lang-ar";
-            } else {
-                html.setAttribute('dir', 'ltr');
-                html.setAttribute('lang', 'en');
-                document.body.className = "bg-brand-lightBg text-brand-darkText min-h-screen flex flex-col justify-between transition-all duration-300 lang-en";
-            }
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            html.setAttribute('lang', currentLang);
 
             const labels = dictionary[currentLang];
             for (let key in labels) {
@@ -423,6 +657,9 @@
             populateTowersDropdownMenu();
             runEngineTowerUpdate();
             renderEmployeeDashboard();
+            toggleFloorMatrix('ground');
+            toggleUnitExplorer('single');
+            updateCarouselLayout();
         }
 
         function populateTowersDropdownMenu() {
@@ -476,22 +713,15 @@
             if(!floorVal || !roomVal || !dataset[floorVal]) return;
             const meta = dataset[floorVal];
             
-            let floorLabel = floorVal;
-            if (currentLang === 'ar') {
-                if (floorVal === 'Ground Floor') floorLabel = 'الدور الأرضي';
-                else if (floorVal === 'First Floor') floorLabel = 'الدور الأول';
-                else if (floorVal === 'Second to Seventh Floor') floorLabel = 'من الدور الثاني للسابع';
-                else if (floorVal === 'Eighth to Fourteenth Floor') floorLabel = 'من الدور الثامن للرابع عشر';
-            }
-            document.getElementById('previewHeaderTitle').innerText = `${towerObj[currentLang]} · ${floorLabel} · ${dictionary[currentLang].roomPrefix} ${roomVal}`;
+            document.getElementById('previewHeaderTitle').innerText = `${towerObj[currentLang]} · ${floorVal} · ${dictionary[currentLang].roomPrefix} ${roomVal}`;
             
             const specSheet = document.getElementById('specDisplaySheet');
             specSheet.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div><span class="text-brand-gold font-bold block text-[10px]">تصنيف المساحة</span><span class="text-white text-xs font-semibold">${currentLang === 'ar' ? meta.typeAr : meta.typeEn}</span></div>
-                    <div><span class="text-brand-gold font-bold block text-[10px]">الطاقة الاستيعابية</span><span class="text-white text-xs font-semibold">${meta.capacity} ${currentLang === 'ar' ? 'مقيمين' : 'Residents'}</span></div>
-                    <div class="md:col-span-2 border-t border-teal-800 my-1 pt-1"></div>
-                    <div class="md:col-span-2"><span class="text-brand-gold font-bold block text-[10px]">المرافق</span><span class="text-slate-300 text-xs">${currentLang === 'ar' ? meta.descAr : meta.descEn}</span></div>
+                    <div><span class="text-emerald-300 font-bold block text-[10px]">تصنيف المساحة</span><span class="text-white text-xs font-semibold">${currentLang === 'ar' ? meta.typeAr : meta.typeEn}</span></div>
+                    <div><span class="text-emerald-300 font-bold block text-[10px]">الطاقة الاستيعابية</span><span class="text-white text-xs font-semibold">${meta.capacity} ${currentLang === 'ar' ? 'مقيمين' : 'Residents'}</span></div>
+                    <div class="md:col-span-2 border-t border-emerald-700 my-1 pt-1"></div>
+                    <div class="md:col-span-2"><span class="text-emerald-300 font-bold block text-[10px]">المرافق</span><span class="text-slate-200 text-xs">${currentLang === 'ar' ? meta.descAr : meta.descEn}</span></div>
                 </div>`;
             renderDynamicVectorGraphics(meta.rooms, roomVal);
         }
@@ -500,7 +730,6 @@
             const container = document.getElementById('svgContainer');
             let roomsSVG = '';
             const columns = 6;
-            const rows = Math.ceil(totalRooms / columns);
             const cellW = 45; const cellH = 35; const gap = 6;
 
             for(let idx = 1; idx <= totalRooms; idx++) {
@@ -515,19 +744,15 @@
                 
                 roomsSVG += `
                     <g class="cursor-pointer group" onclick="selectRoomFromSVG('${num}')">
-                        <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="4" fill="${isSelected ? '#D4AF37' : '#005A5B'}" fill-opacity="${isSelected ? '1' : '0.15'}" stroke="${isSelected ? '#D4AF37' : '#005A5B'}" stroke-width="1.5"/>
-                        <text x="${x + cellW/2}" y="${y + cellH/2 + 4}" font-size="8" font-weight="bold" font-family="sans-serif" text-anchor="middle" fill="${isSelected ? '#005A5B' : '#1E293B'}">R-${idx.toString().padStart(2, '0')}</text>
+                        <rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" rx="4" fill="${isSelected ? '#059669' : '#064e3b'}" fill-opacity="${isSelected ? '1' : '0.15'}" stroke="${isSelected ? '#059669' : '#064e3b'}" stroke-width="1.5"/>
+                        <text x="${x + cellW/2}" y="${y + cellH/2 + 4}" font-size="8" font-weight="bold" font-family="sans-serif" text-anchor="middle" fill="${isSelected ? '#ffffff' : '#0f172a'}">R-${idx.toString().padStart(2, '0')}</text>
                     </g>`;
             }
 
-            const totalWidth = columns * (cellW + gap) + 20;
-            const totalHeight = rows * (cellH + gap) + 80;
-
             container.innerHTML = `
-                <svg viewBox="0 0 ${totalWidth} ${totalHeight}" class="w-full h-auto">
-                    <rect x="5" y="5" width="${totalWidth - 10}" height="45" rx="6" fill="#005A5B" fill-opacity="0.05" stroke="#005A5B" stroke-width="1" stroke-dasharray="3 3"/>
-                    <text x="${totalWidth/2}" y="28" font-size="8" font-weight="bold" fill="#005A5B" text-anchor="middle">${dictionary[currentLang].corridor}</text>
-                    <text x="15" y="42" font-size="7" font-weight="bold" fill="#D4AF37">${dictionary[currentLang].elevators}</text>
+                <svg viewBox="0 0 ${columns * (cellW + gap) + 20} ${Math.ceil(totalRooms / columns) * (cellH + gap) + 80}" class="w-full h-auto">
+                    <rect x="5" y="5" width="${columns * (cellW + gap)}" height="45" rx="6" fill="#047857" fill-opacity="0.08" stroke="#047857" stroke-width="1" stroke-dasharray="3 3"/>
+                    <text x="${(columns * (cellW + gap)) / 2}" y="28" font-size="8" font-weight="bold" fill="#047857" text-anchor="middle">${dictionary[currentLang].corridor}</text>
                     ${roomsSVG}
                 </svg>`;
         }
@@ -540,7 +765,6 @@
             }
         }
 
-        // SUBMIT GUEST APPLICATION
         function executeAllocationProcess() {
             const name = document.getElementById('inp_name').value.trim();
             const phone = document.getElementById('inp_phone').value.trim();
@@ -555,7 +779,6 @@
             const towerObj = towersLookupList.find(t => t.id === towerVal);
             const floorVal = document.getElementById('sel_floor').value;
             const roomVal = document.getElementById('sel_room').value;
-            const labels = dictionary[currentLang];
 
             const appTrackingID = "KFMC-" + Math.floor(1000 + Math.random() * 9000) + "-2026";
 
@@ -573,41 +796,21 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Push to memory state list
             globalApplicationsList = globalApplicationsList.filter(a => a.id !== idVal);
             globalApplicationsList.unshift(newRecord);
 
-            // Modal Receipt Popup
-            const modalBody = document.getElementById('modalReceiptBody');
-            modalBody.innerHTML = `
-                <div class="p-3 bg-amber-50 text-amber-800 font-bold rounded-xl border border-amber-200 flex justify-between items-center mb-4">
-                    <span>${currentLang === 'ar' ? 'حالة الطلب الحالية:' : 'Current Status:'}</span>
-                    <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs"><i class="fa-solid fa-clock ml-1"></i>${currentLang === 'ar' ? 'قيد المراجعة والتدقيق' : 'Pending Review'}</span>
-                </div>
-                <div class="space-y-2 border-b border-gray-100 pb-3">
-                    <p class="text-xs text-gray-400 font-mono">TRACKING ID: ${appTrackingID}</p>
-                    <p class="text-sm"><strong>${labels.recName}:</strong> <span class="text-brand-blue font-bold">${name}</span></p>
-                    <p class="text-sm"><strong>${labels.recId}:</strong> <span class="font-mono">${idVal}</span></p>
-                    <p class="text-sm"><strong>${labels.recPhone}:</strong> <span class="font-mono">${phone}</span></p>
-                </div>
-                <div class="bg-teal-50/50 p-3 rounded-xl border border-teal-100 text-xs space-y-1">
-                    <p>• <strong>${labels.recTower}:</strong> ${currentLang === 'ar' ? towerObj.ar : towerObj.en}</p>
-                    <p>• <strong>${currentLang === 'ar' ? 'الموقع المفضل:' : 'Room Location:'}</strong> ${floorVal} — ${roomVal}</p>
-                </div>`;
+            document.getElementById('modalReceiptBody').innerHTML = `
+                <p class="text-sm font-bold text-emerald-900">${name}</p>
+                <p class="text-xs text-slate-500">تم تسجيل طلبك برقم تتبع: <span class="font-mono text-emerald-700 font-bold">${appTrackingID}</span></p>`;
 
             document.getElementById('successModal').classList.remove('hidden');
-
-            // Reset Input Form
             document.getElementById('inp_name').value = '';
             document.getElementById('inp_phone').value = '';
             document.getElementById('inp_id').value = '';
         }
 
-        function closeSuccessPopUp() {
-            document.getElementById('successModal').classList.add('hidden');
-        }
+        function closeSuccessPopUp() { document.getElementById('successModal').classList.add('hidden'); }
 
-        // LOOKUP FUNCTION
         function checkReturningApplicantStatus() {
             const lookupId = document.getElementById('inp_lookup_id').value.trim();
             const box = document.getElementById('lookupResultContainer');
@@ -638,10 +841,10 @@
                 statusBadgeHtml = `<span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-clock ml-1"></i>${currentLang === 'ar' ? 'قيد المراجعة والتدقيق' : 'Pending Review'}</span>`;
             }
 
-            box.className = "p-4 rounded-xl border border-teal-200 bg-teal-50/60 text-slate-800 text-xs md:text-sm space-y-2";
+            box.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50/60 text-slate-800 text-xs md:text-sm space-y-2";
             box.innerHTML = `
-                <div class="flex justify-between items-center border-b border-teal-200 pb-2">
-                    <span class="font-bold">${currentLang === 'ar' ? 'رقم التتبع الموحد:' : 'Tracking ID:'} <span class="font-mono text-brand-blue">${record.trackingId}</span></span>
+                <div class="flex justify-between items-center border-b border-emerald-200 pb-2">
+                    <span class="font-bold">${currentLang === 'ar' ? 'رقم التتبع الموحد:' : 'Tracking ID:'} <span class="font-mono text-emerald-900">${record.trackingId}</span></span>
                     ${statusBadgeHtml}
                 </div>
                 <p><strong>${currentLang === 'ar' ? 'الاسم:' : 'Name:'}</strong> ${record.name}</p>
@@ -650,16 +853,13 @@
             `;
         }
 
-        // EMPLOYEE DASHBOARD RENDERER & ACTIONS
         function renderEmployeeDashboard() {
             const tbody = document.getElementById("app-table-body");
             const emptyState = document.getElementById("empty-state");
             const dict = dictionary[currentLang];
 
             let cntTotal = globalApplicationsList.length;
-            let cntPending = 0;
-            let cntApproved = 0;
-            let cntRejected = 0;
+            let cntPending = 0, cntApproved = 0, cntRejected = 0;
 
             if (globalApplicationsList.length === 0) {
                 tbody.innerHTML = "";
@@ -673,51 +873,30 @@
 
             globalApplicationsList.forEach((app) => {
                 const status = app.status || "Pending";
-
                 if (status === "Pending") cntPending++;
                 else if (status === "Approved") cntApproved++;
                 else if (status === "Rejected") cntRejected++;
 
-                let badge = "";
-                if (status === "Approved") {
-                    badge = `<span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold inline-block"><i class="fa-solid fa-check ml-1 mr-1"></i>${dict.stApproved}</span>`;
-                } else if (status === "Rejected") {
-                    badge = `<span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold inline-block"><i class="fa-solid fa-xmark ml-1 mr-1"></i>${dict.stRejected}</span>`;
-                } else {
-                    badge = `<span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold inline-block"><i class="fa-solid fa-clock ml-1 mr-1"></i>${dict.stPending}</span>`;
-                }
-
-                const timeStr = app.timestamp ? new Date(app.timestamp).toLocaleTimeString(currentLang === 'ar' ? 'ar-SA' : 'en-US') : '-';
-                const towerName = currentLang === 'ar' ? (app.towerAr || app.towerId) : (app.towerEn || app.towerId);
+                let badge = status === "Approved" 
+                    ? `<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">${dict.stApproved}</span>`
+                    : status === "Rejected"
+                    ? `<span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">${dict.stRejected}</span>`
+                    : `<span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-bold">${dict.stPending}</span>`;
 
                 html += `
-                    <tr class="hover:bg-slate-50/80 transition-colors">
-                        <td class="p-3">
-                            <div class="font-bold text-brand-blue">${app.name}</div>
-                            <div class="text-[11px] text-gray-400 font-mono">ID: ${app.id}</div>
-                        </td>
-                        <td class="p-3 font-mono dir-ltr text-start">${app.phone}</td>
-                        <td class="p-3 font-medium">
-                            <div>${towerName}</div>
-                            <div class="text-xs text-gray-500">${app.floorId} — ${app.roomId}</div>
-                        </td>
-                        <td class="p-3">
-                            <div class="font-mono text-xs font-bold text-brand-gold">${app.trackingId}</div>
-                            <div class="text-[10px] text-gray-400">${timeStr}</div>
-                        </td>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="p-3"><div class="font-bold text-emerald-900">${app.name}</div><div class="text-[11px] text-slate-400 font-mono">ID: ${app.id}</div></td>
+                        <td class="p-3 font-mono">${app.phone}</td>
+                        <td class="p-3"><div>${currentLang === 'ar' ? app.towerAr : app.towerEn}</div><div class="text-xs text-slate-500">${app.floorId} — ${app.roomId}</div></td>
+                        <td class="p-3"><div class="font-mono text-xs font-bold text-emerald-700">${app.trackingId}</div></td>
                         <td class="p-3 text-center">${badge}</td>
                         <td class="p-3 text-center">
                             <div class="flex justify-center gap-2">
-                                <button onclick="updateApplicantStatus('${app.id}', 'Approved')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition shadow-sm flex items-center gap-1">
-                                    <i class="fa-solid fa-check"></i> ${dict.btnApprove}
-                                </button>
-                                <button onclick="updateApplicantStatus('${app.id}', 'Rejected')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition shadow-sm flex items-center gap-1">
-                                    <i class="fa-solid fa-xmark"></i> ${dict.btnReject}
-                                </button>
+                                <button onclick="updateApplicantStatus('${app.id}', 'Approved')" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-3 py-1 rounded text-xs">${dict.btnApprove}</button>
+                                <button onclick="updateApplicantStatus('${app.id}', 'Rejected')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1 rounded text-xs">${dict.btnReject}</button>
                             </div>
                         </td>
-                    </tr>
-                `;
+                    </tr>`;
             });
 
             tbody.innerHTML = html;
@@ -739,9 +918,30 @@
             document.getElementById("cnt-rejected").innerText = rejected;
         }
 
+        function toggleFloorMatrix(fKey) {
+            const data = floorMatrixSpecsDatabase[fKey];
+            document.getElementById('floorMatrixOutputContainer').innerHTML = `
+                <div class="p-4 bg-emerald-900 text-white font-bold text-xs">${currentLang === 'ar' ? data.titleAr : data.titleEn}</div>
+                <div class="p-4 text-xs space-y-1 text-slate-700">
+                    <p>• <strong>${currentLang === 'ar' ? 'عدد الغرف بالدور:' : 'Rooms Count:'}</strong> ${data.rooms}</p>
+                    <p>• <strong>${currentLang === 'ar' ? 'الملاحظات التشغيلية:' : 'Notes:'}</strong> ${currentLang === 'ar' ? data.notesAr : data.notesEn}</p>
+                </div>`;
+        }
+
+        function toggleUnitExplorer(type) {
+            renderUnitSVGOUTLINE(type);
+        }
+
+        function renderUnitSVGOUTLINE(type) {
+            document.getElementById('blueprintVisualExplorerBox').innerHTML = `<div class="text-xs font-bold text-emerald-900">${type === 'single' ? (currentLang === 'ar' ? 'وحدة منفردة (مخصصة لساكنة واحدة)' : 'Single Solitary Suite') : (currentLang === 'ar' ? 'وحدة مشتركة (مخصصة لساكنتين)' : 'Shared Suite')}</div>`;
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             populateTowersDropdownMenu();
             runEngineTowerUpdate();
+            initAutomatedCarousel();
+            toggleFloorMatrix('ground');
+            toggleUnitExplorer('single');
         });
     </script>
 </body>
